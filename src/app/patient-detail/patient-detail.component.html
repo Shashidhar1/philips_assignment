@@ -1,0 +1,281 @@
+<!-- <mat-card class="panel_design">Patient Detail Screen</mat-card>
+<div class="button-row">
+  <a mat-raised-button color="primary" [routerLink]="['/patients']">
+    <mat-icon>list</mat-icon>
+  </a>
+</div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>{{patient.first_name}}</h2>
+    </mat-card-title>
+    <mat-card-subtitle>{{patient.last_name}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <dl>
+      <dt>First Name:</dt>
+      <dd>{{patient.first_name}}</dd>
+      <dt>Last Name:</dt>
+      <dd>{{patient.last_name}}</dd>
+      <dt>Date of Birth:</dt>
+      <dd>{{patient.date_of_birth}}</dd>
+      <dt>Telephone:</dt>
+      <dd>{{patient.telephone}}</dd>
+      <dt>Email Address:</dt>
+      <dd>{{patient.email_address}}</dd>
+    </dl>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-raised-button color="primary" [routerLink]="['/patient-edit', patient.id]">
+      <mat-icon>edit</mat-icon>
+    </a>
+    <a mat-raised-button color="warn" (click)="deletePatient(patient.id)">
+      <mat-icon>delete</mat-icon>
+    </a>
+  </mat-card-actions>
+</mat-card> -->
+
+
+ 
+<div class="container">
+  <h4>Patient Detail Screen</h4>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Patient details</div>
+      <div class="panel-body">
+
+          <ul class="list-unstyled">
+              <li class="col-md-3"><b>Medical ID :</b>   {{ patient.id }}</li>
+              <li class="col-md-3"><b>Age :</b>   {{ patient.age }}</li>
+              <li class="col-md-3"><b>Phone :</b>   {{ patient.telephone }}</li>
+              <li class="col-md-3"><b>Address :</b>   {{ patient.address }}</li>
+              <li class="col-md-3"><b>Name :</b>   {{ patient.first_name +" "+ patient.last_name }}</li>
+              <li class="col-md-3"><b>DoB :</b>   {{ patient.date_of_birth }}</li>
+              <li class="col-md-3"><b>Email :</b>   {{ patient.email_address }}</li>
+          </ul>
+
+          <br><br><br>
+          <div class="panel panel-primary">
+              <div class="panel-heading">Visit details</div>
+              <div class="panel-body">
+
+                  <button type="button" class="btn btn-primary"(click)="getAddpage()">Add Visit</button>
+
+                  <div class="table table-responsive"><br>
+                      <!-- <h3 class="text-warning">Vendor Information</h3> -->
+                      <!-- <table class="table table-bordered" *ngIf="arraylist?.length > 0;else noClients"></table> -->
+                      <table class="table table-bordered" >
+                          <tr class="bg-info text-white text-center">
+                              <th>ID</th>
+                              <th>Last Visit </th>
+                              <th>Doctor Name</th>
+                              <th>Comments</th>
+                              <th>Next Visit Date</th>
+                              <th>Medicines Prescribed</th>
+                              <th>Others</th>
+                              <th>Edit</th>
+                          </tr>
+                         
+                          <tr class="text-center" *ngFor="let x of visit" >
+                              <td> {{x.id}} </td>
+                              <td> {{x.last_visit}} </td>
+                              <!-- <td><a href="mailto:{{x.email}}">{{x.v_email}}</a> </td> -->
+                              <td> {{x.doctor_name}} </td>
+                              <td> {{x.comments}} </td>
+
+                              <td> {{x.next_visit}} </td>
+                              <td> {{x.medicines}} </td>
+                              <td> {{x.others}} </td>
+                              <td (click)="edit(x.id)"> <i class="fa fa-edit"></i> </td>
+                    
+                          </tr> 
+                      </table>
+            
+                      <!-- <ng-template #noClients>
+                          <h5 class="text-center text-warning" >No vendors data found.</h5>
+                      </ng-template> -->
+                      
+                  </div> 
+
+              </div>
+         </div>
+    </div>
+</div>
+
+
+
+
+<!-- main app container -->
+<!-- <div class="jumbotron" *ngIf="!isHidden" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+
+                    <form name="form" (ngSubmit)="f.form.valid && onSubmit()"  #f="ngForm" novalidate>
+                    <input type="text" class="form-control" name="patientid" [(ngModel)]="model.patientid" #patientid="ngModel"  required/>
+
+                    <div class="form-group">
+                        <label for="list_visit">Last Visit</label>
+                        <input type="text" class="form-control" name="last_visit" [(ngModel)]="model.last_visit" #last_visit="ngModel" [ngClass]="{ 'is-invalid': f.submitted && last_visit.invalid }" required />
+                        <div *ngIf="f.submitted && last_visit.invalid" class="invalid-feedback">
+                            <div *ngIf="last_visit.errors.required">Last Visit is required</div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="doctor_name">Doctor Name</label>
+                        <input type="text" class="form-control" name="doctor_name" [(ngModel)]="model.doctor_name" #doctor_name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && doctor_name.invalid }" required />
+                        <div *ngIf="f.submitted && doctor_name.invalid" class="invalid-feedback">
+                            <div *ngIf="doctor_name.errors.required">Doctor Name is required</div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="comments">Comments</label>
+                        <input type="text" class="form-control" name="comments" [(ngModel)]="model.comments" #comments="ngModel" [ngClass]="{ 'is-invalid': f.submitted && comments.invalid }" />  
+                    </div>
+
+                    <div class="form-group">
+                        <label for="next_visit">Next Visit</label>
+                        <input type="text" class="form-control" name="next_visit" [(ngModel)]="model.next_visit" #next_visit="ngModel" [ngClass]="{ 'is-invalid': f.submitted && next_visit.invalid }" required />
+                        <div *ngIf="f.submitted && next_visit.invalid" class="invalid-feedback">
+                            <div *ngIf="next_visit.errors.required">Next Visit is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="medicines">Medicines</label>
+                        <input type="text" class="form-control" name="medicines" [(ngModel)]="model.medicines" #medicines="ngModel" [ngClass]="{ 'is-invalid': f.submitted && medicines.invalid }" required />
+                        <div *ngIf="f.submitted && medicines.invalid" class="invalid-feedback">
+                            <div *ngIf="medicines.errors.required">Medicines is required</div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="others">Others</label>
+                        <input type="text" class="form-control" name="others" [(ngModel)]="model.others" #others="ngModel" [ngClass]="{ 'is-invalid': f.submitted && others.invalid }" />  
+                    </div>
+
+
+                    <div class="form-group">
+                        <button class="btn btn-danger">Close</button>
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="container" *ngIf="isForm">
+        <div class="row"> 
+            <!--       
+            <div class="button-row">
+                <a mat-raised-button color="primary" [routerLink]="['/patients']">
+                  Cancel
+                </a>
+              </div> -->
+
+                <div class="panel panel-primary">
+                  <div class="panel-heading">Add/Edit Visit</div>
+                  <div class="panel-body">
+
+                        
+              <form [formGroup]="patientFormVisit" (ngSubmit)="onFormSubmit(patientFormVisit.value)">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Patient ID" formControlName="patientid" [errorStateMatcher]="matcher">
+                  
+                  <mat-error>
+                    <span *ngIf="!patientFormVisit.get('patientid').valid && patientFormVisit.get('patientid').touched">Please enter Patient id</span>
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                  <input matInput [matDatepicker]="picker" placeholder="Last visit" formControlName="last_visit" [errorStateMatcher]="matcher">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  <mat-error>
+                    <span *ngIf="!patientFormVisit.get('last_visit').valid && patientFormVisit.get('last_visit').touched">Please enter Last Visit</span>
+                  </mat-error>
+                </mat-form-field>
+
+                <!-- <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field> -->
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Doctor Name" formControlName="doctor_name" [errorStateMatcher]="matcher">
+                    <mat-error>
+                      <span *ngIf="!patientFormVisit.get('doctor_name').valid && patientFormVisit.get('doctor_name').touched">Please enter Doctor Name</span>
+                    </mat-error>
+                  </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                  <input  matInput placeholder="Comments" formControlName="comments" [errorStateMatcher]="matcher">
+                  <mat-error>
+                    <span *ngIf="!patientFormVisit.get('comments').valid && patientFormVisit.get('comments').touched">Please enter Comments</span>
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                  <input matInput [matDatepicker]="picker1" placeholder="Next Visit" formControlName="next_visit" [errorStateMatcher]="matcher">
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  <mat-error>
+                    <span *ngIf="!patientFormVisit.get('next_visit').valid && patientFormVisit.get('next_visit').touched">Please enter Next visit</span>
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Medicines" formControlName="medicines" [errorStateMatcher]="matcher">
+                  <mat-error>
+                    <span *ngIf="!patientFormVisit.get('medicines').valid && patientFormVisit.get('medicines').touched">Please enter Medicines</span>
+                  </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Others" formControlName="others" >
+                    <mat-error>
+                      <span *ngIf="!patientFormVisit.get('others').valid && patientFormVisit.get('others').touched">Please enter others</span>
+                    </mat-error>
+                  </mat-form-field>
+                 
+      
+                <div class="button-row">
+
+                    <a class="cancel" mat-raised-button color="warn" (click)="cancelForm()">
+                      Cancel
+                    </a>
+
+                  <button type="submit" [disabled]="!patientFormVisit.valid" mat-raised-button color="primary" *ngIf="isShow">
+                    <mat-icon>save</mat-icon>
+                  </button>
+
+                  <button class="btns btn-primary" type="submit" [disabled]="!patientFormVisit.valid" mat-raised-button color="primary" *ngIf="isHidden">
+                    Update
+                  </button>
+                </div>
+              </form>
+
+
+                  </div>
+
+                </div>
+      
+        </div>
+      </div>
+
+
+
+      
+  
+  
+  
+  

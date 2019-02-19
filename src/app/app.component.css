@@ -1,0 +1,20 @@
+.navbar {
+    height: 136px;
+    background-color: rgba(255,153,153,0.9);
+    top: 0;
+    left: 0;
+}
+
+.site-logo {
+    max-height: 100px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cont {
+    padding-top: 20px;
+    padding-left: 77px;
+}

@@ -1,0 +1,108 @@
+{
+  "patient": [
+    {
+      "first_name": "Shashi",
+      "last_name": "dhar",
+      "age": "26",
+      "date_of_birth": "25-11-1992",
+      "telephone": "7899556473",
+      "email_address": "shashi@ltts.com",
+      "address": "bangalore",
+      "height": "5.9",
+      "weight": "64",
+      "id": 1
+    }
+  ],
+  "visit_details": [
+    {
+      "patientid": 1,
+      "id": 1,
+      "last_visit": "15-01-2019",
+      "next_visit": "18-01-2019",
+      "doctor_name": "Shankar",
+      "medicines": "dolo",
+      "comments": "good",
+      "others": ""
+    },
+    {
+      "patientid": 1,
+      "id": 2,
+      "last_visit": "15-01-2019",
+      "next_visit": "18-01-2019",
+      "doctor_name": "Shailaja",
+      "medicines": "dolo",
+      "comments": "good",
+      "others": ""
+    },
+    {
+      "id": 3,
+      "last_visit": "16-01-2019",
+      "next_visit": "18-01-2019",
+      "doctor_name": "fdsf",
+      "comments": "fddsf",
+      "medicines": "sfsfd,dfgdf",
+      "others": "fsdfdsf",
+      "patientid": 1
+    },
+    {
+      "patientid": "2",
+      "last_visit": "18-01-2019",
+      "next_visit": "18-01-2019",
+      "doctor_name": "fsdf",
+      "comments": "fsdf",
+      "medicines": "fdsdsf",
+      "others": "sdfds",
+      "id": 7
+    },
+    {
+      "patientid": "2",
+      "last_visit": "22-02-2019",
+      "doctor_name": "dsada",
+      "comments": "asdsad",
+      "next_visit": "22-02-2019",
+      "medicines": "cxcc",
+      "others": "czxczxc",
+      "id": 8
+    },
+    {
+      "patientid": "2",
+      "last_visit": "12-02-2019",
+      "doctor_name": "dfdsfds",
+      "comments": "dsdssa",
+      "next_visit": "27-02-2019",
+      "medicines": "fsdfsd",
+      "others": "sdfsdf",
+      "id": 9
+    },
+    {
+      "patientid": "2",
+      "last_visit": "27-02-2019",
+      "doctor_name": "sdasd",
+      "comments": "asd",
+      "next_visit": "27-02-2019",
+      "medicines": "dsd",
+      "others": "asd",
+      "id": 10
+    },
+    {
+      "patientid": "2",
+      "last_visit": "22-02-2019",
+      "doctor_name": "sdadasd",
+      "comments": "asdasd",
+      "next_visit": "27-02-2019",
+      "medicines": "sdasda",
+      "others": "dasdsa",
+      "id": 11
+    },
+    {
+      "patientid": "2",
+      "last_visit": "22-02-2019",
+      "doctor_name": "sukumar",
+      "comments": "sfsfsf",
+      "next_visit": "28-02-2019",
+      "medicines": "crocin",
+      "others": "fsfsfsfsd",
+      "id": 12
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+.example-card {
+  max-width: 500px;
+}
+
+.button-row {
+  margin: 10px 0;
+}
+
+.panel_design {
+  background-color: blue;
+  color:white;
+}
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-full-width:nth-last-child() {
+  margin-bottom: 10px;
+}
+
+.button-row {
+  margin: 10px 0;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.mat-radio-group {
+  margin-left: 36px;
+}
+
+
+.btns {
+  margin-left:20px;
+  background-color: blue;
+  color:white;
+}
+
+.cancel{
+  margin-right:20px;
+}

@@ -1,0 +1,15 @@
+mat-card {
+    border: 2px solid red;
+    width:350px;
+    height:300px;
+    transform: translate(550px,100px);
+}
+
+mat-card-actions{
+    text-align: center;
+}
+
+
+/* mat-form-field {
+    text-align: center;
+}. */
